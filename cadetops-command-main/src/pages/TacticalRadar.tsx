@@ -5,17 +5,17 @@ import { useEffect, useState } from "react";
 const TacticalRadar = () => {
   const navigate = useNavigate();
   const [timestamp, setTimestamp] = useState("");
-  
+
   useEffect(() => {
     const updateTimestamp = () => {
       const now = new Date();
       const formatted = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, '0')}-${String(now.getUTCDate()).padStart(2, '0')} ${String(now.getUTCHours()).padStart(2, '0')}:${String(now.getUTCMinutes()).padStart(2, '0')}:${String(now.getUTCSeconds()).padStart(2, '0')} UTC`;
       setTimestamp(formatted);
     };
-    
+
     updateTimestamp();
     const interval = setInterval(updateTimestamp, 1000);
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -57,11 +57,11 @@ const TacticalRadar = () => {
           <div className="border-b border-terminal-border pb-2 mb-4">
             <p className="text-xs text-muted-foreground">SIMULATED RADAR FEED</p>
           </div>
-          
+
           <div className="space-y-4">
             <div className="border border-terminal-border p-4 font-mono text-xs leading-tight">
               <pre className="text-foreground">
-{`┌─────────────────────────────────┐
+                {`┌─────────────────────────────────┐
 │                                 │
 │         .           .           │
 │                                 │
@@ -96,7 +96,7 @@ const TacticalRadar = () => {
             <div className="border-b border-terminal-border pb-2 mb-4">
               <p className="text-xs text-muted-foreground">GRID MODE // TRAINING ONLY</p>
             </div>
-            
+
             <div className="space-y-2">
               <div className="font-mono text-xs">
                 <div className="flex mb-1">
@@ -131,7 +131,7 @@ const TacticalRadar = () => {
             <div className="border-b border-terminal-border pb-2 mb-4">
               <p className="text-xs text-muted-foreground">INTELLIGENCE FEED</p>
             </div>
-            
+
             <div className="space-y-2 text-xs">
               <p className="text-foreground">&gt;&gt; DATA SOURCE: TRAINING INPUT</p>
               <p className="text-foreground">&gt;&gt; THREAT LEVEL: ALPHA</p>
@@ -146,9 +146,9 @@ const TacticalRadar = () => {
 
       <div className="border-t border-terminal-border pt-3 mt-4">
         <p className="text-xs text-muted-foreground mb-2">&gt;&gt; AWAITING NEXT INPUT</p>
-        <Button 
+        <Button
           onClick={() => navigate("/")}
-          variant="ghost" 
+          variant="ghost"
           className="text-foreground hover:bg-secondary hover:text-foreground border-none text-xs"
         >
           [ RETURN TO MISSION CONTROL ]
